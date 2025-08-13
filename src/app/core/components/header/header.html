@@ -1,13 +1,13 @@
 <header>
     <!-- Logo -->
     <div class="logo">
-        <img src="https://jakovietnam.com/wp-content/uploads/2024/07/logo-1.png.webp" alt="Yoko Logo">
+        <img src="https://jakovietnam.com/wp-content/uploads/2024/07/logo-1.png.webp" alt="Yako Logo">
     </div>
 
     <!-- Desktop Menu -->
     <nav>
         <ul>
-            <li><a routerLink="/about">Về Yoko ▼</a></li>
+            <li><a routerLink="/about">Về Jako</a></li>
             <li>
                 <a routerLink="/study-abroad" class="active">Du Học Nhật Bản ▼</a>
                 <ul class="dropdown">
@@ -33,7 +33,7 @@
 
     <!-- Search & Button -->
     <div class="header-actions">
-        <button class="search-btn" (click)="onSearch()">🔍</button>
+       
         <button class="consult-btn" (click)="onConsult()">Tư Vấn Ngay</button>
     </div>
 </header>
@@ -53,13 +53,13 @@
         <nav class="mobile-nav">
             <ul>
                 <li>
-                    <a routerLink="/about" (click)="onMobileMenuItemClick()">Về Yoko</a>
+                    <a routerLink="/about" (click)="onMobileMenuItemClick()">Về Jako</a>
                 </li>
                 <li>
                     <a (click)="toggleMobileDropdown('studyAbroad'); $event.preventDefault()" 
                        class="active">
                         Du Học Nhật Bản 
-                        <span [style.transform]="mobileDropdowns['studyAbroad'] ? 'rotate(180deg)' : 'rotate(0deg)'" 
+                        <span [style.transform]="mobileDropdowns['studyAbroad'] ? 'rotate(180deg)' : 'rotate(0deg)'"
                               style="transition: transform 0.3s ease;">▼</span>
                     </a>
                     <ul class="mobile-dropdown" [class.show]="mobileDropdowns['studyAbroad']">

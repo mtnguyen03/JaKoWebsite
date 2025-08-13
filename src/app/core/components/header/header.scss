@@ -28,7 +28,7 @@ header {
 }
 
 /* Desktop Navigation */
-nav > ul {
+nav>ul {
     list-style: none;
     display: flex;
     margin: 0;
@@ -48,6 +48,7 @@ nav ul li a {
     display: flex;
     align-items: center;
     padding: 10px 0;
+    margin-left:20px;
 }
 
 nav ul li a:hover {
@@ -65,7 +66,7 @@ nav ul li a.active {
     top: 100%;
     left: 0;
     background: white;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     padding: 10px 0;
     min-width: 220px;
     z-index: 99;
@@ -102,6 +103,7 @@ nav ul li:hover .dropdown {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -145,7 +147,7 @@ nav ul li:hover .dropdown {
 .consult-btn:hover {
     background: #cc0000;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(255,0,0,0.3);
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
 }
 
 /* Mobile Hamburger Menu */
@@ -195,13 +197,15 @@ nav ul li:hover .dropdown {
 
 .mobile-menu-content {
     background: white;
-    width: 300px; /* Tăng width để có không gian rộng hơn */
+    width: 300px;
+    /* Tăng width để có không gian rộng hơn */
     height: 100%;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     overflow-y: auto;
     display: flex;
-    flex-direction: column; /* Đảm bảo nội dung xếp dọc */
+    flex-direction: column;
+    /* Đảm bảo nội dung xếp dọc */
 }
 
 .mobile-menu.active .mobile-menu-content {
@@ -213,14 +217,17 @@ nav ul li:hover .dropdown {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    border-bottom: 2px solid #f0f0f0; /* Làm rõ hơn đường phân cách */
-    background: #fafafa; /* Nền nhẹ cho header */
+    border-bottom: 2px solid #f0f0f0;
+    /* Làm rõ hơn đường phân cách */
+    background: #fafafa;
+    /* Nền nhẹ cho header */
 }
 
 .mobile-close {
     background: none;
     border: none;
-    font-size: 28px; /* Tăng kích thước nút đóng */
+    font-size: 28px;
+    /* Tăng kích thước nút đóng */
     cursor: pointer;
     color: #1b2b45;
     width: 40px;
@@ -247,49 +254,66 @@ nav ul li:hover .dropdown {
 .mobile-nav ul {
     list-style: none;
     display: flex;
-    flex-direction: column; /* Đảm bảo các item xếp dọc */
+    flex-direction: column;
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-.mobile-nav > ul > li {
+.mobile-nav>ul>li {
     border-bottom: 1px solid #eee;
-    width: 100%; /* Chiếm toàn bộ width */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.mobile-nav > ul > li > a {
+.mobile-nav>ul>li>a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 25px; /* Tăng padding để dễ nhấn hơn */
+    padding: 20px 25px;
     color: #1b2b45;
     text-decoration: none;
-    font-weight: 600; /* Tăng độ đậm font */
+    font-weight: 600;
     font-size: 16px;
     width: 100%;
+    min-height: 60px;
     transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
-.mobile-nav > ul > li > a:hover {
+.mobile-nav>ul>li>a:hover {
     background: #f8f9fa;
     color: red;
 }
 
-.mobile-nav > ul > li > a.active {
+.mobile-nav>ul>li>a.active {
     color: red;
-    background: rgba(255, 0, 0, 0.1); /* Nền nhẹ cho item active */
+    background: rgba(255, 0, 0, 0.05);
+    border-left: 4px solid red;
+    padding-left: 21px;
 }
 
 /* Mobile Dropdown - Xếp dọc trong dropdown */
 .mobile-dropdown {
-    display: none;
+    display: none !important;
+    /* Force hide by default */
     background: #f8f9fa;
     width: 100%;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
 }
 
 .mobile-dropdown.show {
-    display: flex; /* Sử dụng flex thay vì block */
+    display: flex !important;
     flex-direction: column;
+    max-height: 250px;
+    opacity: 1;
     animation: slideDown 0.3s ease;
 }
 
@@ -297,16 +321,19 @@ nav ul li:hover .dropdown {
     from {
         opacity: 0;
         max-height: 0;
+        padding: 0;
     }
+
     to {
         opacity: 1;
-        max-height: 200px;
+        max-height: 250px;
+        padding: 0;
     }
 }
 
 .mobile-dropdown li {
     width: 100%;
-    border-bottom: 1px solid #e0e0e0;
+    display: flex;
 }
 
 .mobile-dropdown li:last-child {
@@ -314,29 +341,39 @@ nav ul li:hover .dropdown {
 }
 
 .mobile-dropdown li a {
-    display: block;
-    padding: 15px 45px; /* Tăng padding trái để tạo indent */
+    display: flex;
+    align-items: center;
+    padding: 16px 25px 16px 50px;
     color: #666;
     text-decoration: none;
-    font-weight: normal;
-    font-size: 14px;
+    font-weight: 400;
+    font-size: 15px;
     width: 100%;
+    min-height: 52px;
     transition: all 0.3s ease;
     position: relative;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e9ecef;
 }
 
 .mobile-dropdown li a:before {
     content: "•";
-    position: absolute;
-    left: 30px;
+    left: 32px;
     color: red;
-    font-size: 18px;
+    font-size: 16px;
+    line-height: 1;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .mobile-dropdown li a:hover {
     color: red;
     background: white;
-    padding-left: 50px; /* Hiệu ứng indent khi hover */
+    transform: translateX(3px);
+}
+
+.mobile-dropdown li:last-child a {
+    border-bottom: none;
 }
 
 /* Responsive Styles */
@@ -347,7 +384,8 @@ nav ul li:hover .dropdown {
 
     .hamburger {
         display: flex;
-        order: -1; /* Đưa hamburger lên đầu */
+        order: -1;
+        /* Đưa hamburger lên đầu */
     }
 
     nav {
@@ -371,16 +409,27 @@ nav ul li:hover .dropdown {
 
 @media (max-width: 480px) {
     .mobile-menu-content {
-        width: 280px; /* Giảm width trên màn hình nhỏ hơn */
+        width: 280px;
     }
 
-    .mobile-nav > ul > li > a {
-        padding: 16px 20px;
+    .mobile-nav>ul>li>a {
+        padding: 18px 20px;
         font-size: 15px;
+        min-height: 56px;
+    }
+
+    .mobile-nav>ul>li>a.active {
+        padding-left: 16px;
     }
 
     .mobile-dropdown li a {
-        padding: 12px 35px;
-        font-size: 13px;
+        padding: 14px 20px 14px 45px;
+        font-size: 14px;
+        min-height: 48px;
+    }
+
+    .mobile-dropdown li a:before {
+        left: 27px;
     }
 }
+

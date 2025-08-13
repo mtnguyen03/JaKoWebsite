@@ -1,9 +1,9 @@
 import { Component, HostListener } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })
@@ -13,6 +13,7 @@ export class Header {
   mobileDropdowns: { [key: string]: boolean } = {
     studyAbroad: false
   };
+  searchQuery: string = '';
 
   constructor() { }
 
@@ -79,6 +80,7 @@ export class Header {
     // Or show contact info
     // this.showConsultationModal();
   }
+
 
 
 }

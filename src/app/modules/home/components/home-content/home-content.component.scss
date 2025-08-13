@@ -1,6 +1,10 @@
-.home-content {
-  padding: 15px;
-  background-color: #e3f2fd;
-  border-radius: 5px;
-  font-size: 18px;
+.home-banner {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover; /* giữ tỷ lệ, cắt phần thừa nếu cần */
+  border-radius: 8px; /* bo góc nhẹ, nếu muốn */
+  display: block;
+  margin-top: 20px;
 }
+
+
