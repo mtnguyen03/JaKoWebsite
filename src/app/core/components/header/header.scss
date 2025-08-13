@@ -1,0 +1,386 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+    border-bottom: 1px solid #ddd;
+    background: white;
+    position: relative;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+/* Desktop Navigation */
+nav > ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 25px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #1b2b45;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+nav ul li a:hover {
+    color: red;
+}
+
+nav ul li a.active {
+    color: red;
+}
+
+/* Desktop Dropdown */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 10px 0;
+    min-width: 220px;
+    z-index: 99;
+    border-radius: 8px;
+    border-top: 3px solid red;
+}
+
+.dropdown li {
+    list-style: none;
+}
+
+.dropdown li a {
+    display: block;
+    padding: 12px 20px;
+    color: #1b2b45;
+    font-weight: normal;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown li a:hover {
+    color: red;
+    background-color: #f8f9fa;
+}
+
+/* Hover hiện dropdown */
+nav ul li:hover .dropdown {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header Actions */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-btn {
+    border: none;
+    background: #f3f3f3;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background: #e9ecef;
+}
+
+.consult-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.consult-btn:hover {
+    background: #cc0000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255,0,0,0.3);
+}
+
+/* Mobile Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #1b2b45;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+}
+
+.mobile-menu.active {
+    display: flex;
+}
+
+.mobile-menu-content {
+    background: white;
+    width: 300px; /* Tăng width để có không gian rộng hơn */
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column; /* Đảm bảo nội dung xếp dọc */
+}
+
+.mobile-menu.active .mobile-menu-content {
+    transform: translateX(0);
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid #f0f0f0; /* Làm rõ hơn đường phân cách */
+    background: #fafafa; /* Nền nhẹ cho header */
+}
+
+.mobile-close {
+    background: none;
+    border: none;
+    font-size: 28px; /* Tăng kích thước nút đóng */
+    cursor: pointer;
+    color: #1b2b45;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.mobile-close:hover {
+    background: #e9ecef;
+}
+
+/* Mobile Navigation - Xếp dọc hoàn toàn */
+.mobile-nav {
+    padding: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column; /* Đảm bảo các item xếp dọc */
+    width: 100%;
+}
+
+.mobile-nav > ul > li {
+    border-bottom: 1px solid #eee;
+    width: 100%; /* Chiếm toàn bộ width */
+}
+
+.mobile-nav > ul > li > a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 25px; /* Tăng padding để dễ nhấn hơn */
+    color: #1b2b45;
+    text-decoration: none;
+    font-weight: 600; /* Tăng độ đậm font */
+    font-size: 16px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav > ul > li > a:hover {
+    background: #f8f9fa;
+    color: red;
+}
+
+.mobile-nav > ul > li > a.active {
+    color: red;
+    background: rgba(255, 0, 0, 0.1); /* Nền nhẹ cho item active */
+}
+
+/* Mobile Dropdown - Xếp dọc trong dropdown */
+.mobile-dropdown {
+    display: none;
+    background: #f8f9fa;
+    width: 100%;
+    flex-direction: column;
+}
+
+.mobile-dropdown.show {
+    display: flex; /* Sử dụng flex thay vì block */
+    flex-direction: column;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 200px;
+    }
+}
+
+.mobile-dropdown li {
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.mobile-dropdown li:last-child {
+    border-bottom: none;
+}
+
+.mobile-dropdown li a {
+    display: block;
+    padding: 15px 45px; /* Tăng padding trái để tạo indent */
+    color: #666;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 14px;
+    width: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.mobile-dropdown li a:before {
+    content: "•";
+    position: absolute;
+    left: 30px;
+    color: red;
+    font-size: 18px;
+}
+
+.mobile-dropdown li a:hover {
+    color: red;
+    background: white;
+    padding-left: 50px; /* Hiệu ứng indent khi hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    .hamburger {
+        display: flex;
+        order: -1; /* Đưa hamburger lên đầu */
+    }
+
+    nav {
+        display: none;
+    }
+
+    .header-actions {
+        gap: 10px;
+    }
+
+    .consult-btn {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+
+    .search-btn {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-menu-content {
+        width: 280px; /* Giảm width trên màn hình nhỏ hơn */
+    }
+
+    .mobile-nav > ul > li > a {
+        padding: 16px 20px;
+        font-size: 15px;
+    }
+
+    .mobile-dropdown li a {
+        padding: 12px 35px;
+        font-size: 13px;
+    }
+}
